@@ -12,8 +12,8 @@ Welcome to the **FDF Three.js Terrain Visualizer**! This project is a powerful a
 
 ## 📸 Screenshots
 
-<img src="./assets/screen1.png" alt="Screenshot 1" width="600"/>
-<img src="./assets/screen2.png" alt="Screenshot 2" width="600"/>
+![Screenshot 1](./assets/screen1.png)
+![Screenshot 2](./assets/screen2.png)
 
 ## 🛠️ Technologies Used
 
@@ -44,7 +44,7 @@ To run this project locally, follow these steps:
 ## 💡 How to Use
 
 1. **Map Builder**: Click the "Map Builder" button to open a dialog where you can input your custom terrain data. Click "Apply" to visualize the terrain.
-<img src="./assets/screen3.png" alt="Screenshot 1" width="600"/>
+![Screenshot 3](./assets/screen3.png)
 2. **Load Predefined Maps**: Use the buttons provided to load predefined maps such as "France Map", "Pyramide Map", "Mars Map", and "42 Map".
 3. **Customize Map**: Use the GUI to adjust parameters like terrain spacing, color fading, and rotation speeds.
 
@@ -66,4 +66,4 @@ To run this project locally, follow these steps:
 
 ---
 
-Made with ❤️ by [LossaLos 42 students](https://github.com/LossaLos)
+Made with ❤️ by [LossaLos 42 student](https://github.com/LossaLos)
