@@ -41,7 +41,6 @@ To run this project locally, follow these steps:
  **Or test here**:
     https://fdfthreejs.netlify.app/
 
-
 ## 💡 How to Use
 
 1. **Map Builder**: Click the "Map Builder" button to open a dialog where you can input your custom terrain data. Click "Apply" to visualize the terrain.
