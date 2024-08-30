@@ -1,6 +1,6 @@
-# 🌍 FDF Three.js Terrain Visualizer
+# 🌍 FDF Three.js
 
-Welcome to the **FDF Three.js Terrain Visualizer**! This project is a powerful and interactive 3D wireframe visualizer built using [Three.js](https://threejs.org/). It allows users to create, customize, and explore 3D terrains using data inputs or predefined maps. With a focus on customization and ease of use, this tool is perfect for anyone interested in visualizing topographic data or experimenting with map generation.
+Welcome to the **FDF Three.js**! This project is a powerful and interactive 3D wireframe visualizer built using [Three.js](https://threejs.org/). It allows users to create, customize, and explore 3D maps using data inputs or predefined maps. With a focus on customization and ease of use, this tool is perfect for anyone interested in visualizing topographic data or experimenting with map generation.
 
 ## 🚀 Features
 
@@ -9,10 +9,6 @@ Welcome to the **FDF Three.js Terrain Visualizer**! This project is a powerful a
 - **Predefined Maps**: Quickly load and visualize several predefined maps including France, Mars, Pyramide, and 42.
 - **Advanced Color Fading**: Customize the terrain colors with fading effects.
 - **Responsive Design**: Works well on different screen sizes, with a clean and intuitive UI.
-
-## 📸 Screenshots
-
-<img src="assets/screen1.png" height="725">
 
 ## 🛠️ Technologies Used
 
@@ -42,10 +38,9 @@ To run this project locally, follow these steps:
 
 ## 💡 How to Use
 
-1. **Map Builder**: Click the "Map Builder" button to open a dialog where you can input your custom terrain data. Click "Apply" to visualize the terrain.
-![Screenshot 3](https://imgur.com/LanP6q6)
+1. **Map Builder**: Click the "Map Builder" button to open a dialog where you can input your custom map data. Click "Apply" to visualize the map.
 2. **Load Predefined Maps**: Use the buttons provided to load predefined maps such as "France Map", "Pyramide Map", "Mars Map", and "42 Map".
-3. **Customize Map**: Use the GUI to adjust parameters like terrain spacing, color fading, and rotation speeds.
+3. **Customize Map**: Use the GUI to adjust parameters like map spacing, color fading, and rotation speeds.
 
 ## 🎨 Customization
 
