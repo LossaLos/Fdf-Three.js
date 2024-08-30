@@ -31,7 +31,7 @@ let rotationSpeedX = 0;
 let rotationSpeedY = 0;
 let rotationSpeedZ = 0;
 let wireframeColor = 0xffffff;
-let fadeHeightEffect = false;
+let fadeHeightEffect = true;
 let fadeColor1 = 0xff0000;
 let fadeColor2 = 0x0000ff;
 
