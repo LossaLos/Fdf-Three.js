@@ -1,0 +1,70 @@
+# 🌍 FDF Three.js Terrain Visualizer
+
+Welcome to the **FDF Three.js Terrain Visualizer**! This project is a powerful and interactive 3D wireframe visualizer built using [Three.js](https://threejs.org/). It allows users to create, customize, and explore 3D terrains using data inputs or predefined maps. With a focus on customization and ease of use, this tool is perfect for anyone interested in visualizing topographic data or experimenting with map generation.
+
+## 🚀 Features
+
+- **Interactive 3D Terrain Rendering**: Create and explore terrains in 3D with real-time controls.
+- **Map Builder**: Input your custom terrain data directly through a simple interface.
+- **Predefined Maps**: Quickly load and visualize several predefined maps including France, Mars, Pyramide, and 42.
+- **Advanced Color Fading**: Customize the terrain colors with fading effects.
+- **Responsive Design**: Works well on different screen sizes, with a clean and intuitive UI.
+
+## 📸 Screenshots
+
+![Screenshot 1](screen1.PNG)
+![Screenshot 2](screen2.PNG)
+
+## 🛠️ Technologies Used
+
+- **Three.js**: For rendering 3D graphics in the browser.
+- **dat.GUI**: For easy manipulation of settings and parameters.
+- **HTML/CSS/JavaScript**: The core technologies for building the web interface.
+
+## 📦 Installation
+
+To run this project locally, follow these steps:
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/LossaLos/Fdf-Three.js.git
+    ```
+2. **Navigate to the project directory**:
+    ```bash
+    cd fdf-threejs-visualizer
+    ```
+3. **Open `index.html` in your favorite browser**:
+    ```bash
+    open index.html
+    ```
+
+## 💡 How to Use
+
+1. **Map Builder**: Click the "Map Builder" button to open a dialog where you can input your custom terrain data. Click "Apply" to visualize the terrain.
+![Screenshot 3](screen3.PNG)
+2. **Load Predefined Maps**: Use the buttons provided to load predefined maps such as "France Map", "Pyramide Map", "Mars Map", and "42 Map".
+3. **Customize Map**: Use the GUI to adjust parameters like terrain spacing, color fading, and rotation speeds.
+
+## 🎨 Customization
+
+### Colors & Fading
+- You can define multiple color stops based on altitude to create smooth gradients.
+- Different fading effects are available to highlight specific features of the terrain.
+
+### Controls
+- Use the `FlyControls` to navigate around the terrain freely.
+- Adjust camera position and zoom to get the best view of your terrain.
+
+## 📝 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## 🙌 Acknowledgements
+
+- [Three.js](https://threejs.org/) for making 3D graphics on the web accessible.
+- [dat.GUI](https://github.com/dataarts/dat.gui) for the intuitive interface.
+- Thanks to everyone who has contributed to the tools and libraries used in this project.
+
+---
+
+Made with ❤️ by [LossaLos 42 students](https://github.com/your-username)

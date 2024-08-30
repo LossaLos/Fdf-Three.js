@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Controls</title>
+    <link rel="stylesheet" href="fdf.css">
+</head>
+<body>
+
+<div id="dialog">
+    <label for="terrainInput">Enter map data:</label>
+    <textarea id="terrainInput"></textarea>
+    <button id="applyTerrain">Apply</button>
+    <button id="closeDialog">Close</button>
+</div>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+            "OrbitControls": "https://unpkg.com/three@0.152.2/examples/jsm/controls/OrbitControls.js",
+            "MapControls": "https://unpkg.com/three@0.152.2/examples/jsm/controls/OrbitControls.js",
+            "FlyControls": "https://unpkg.com/three@0.152.2/examples/jsm/controls/FlyControls.js",
+            "dat.gui": "https://cdn.jsdelivr.net/npm/dat.gui/build/dat.gui.module.js"
+        }
+    }
+</script>
+<button class="grid" id="openDialog">Map builder</button>
+<button class="btn" id="loadFranceMap">France Map</button>
+<button class="btn" id="loadPyraMap">Pyramide Map</button>
+<button class="btn" id="loadMarsMap">Mars Map</button>
+<button class="btn" id="load42Map"> 42 Map</button>
+<button class="txt" onclick="window.location.href='https://github.com/LossaLos';""> Fdf Three.js</button>
+
+<script type="module" src="./script.js"></script>
+
+</body>
+</html>
