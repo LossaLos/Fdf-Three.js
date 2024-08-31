@@ -156,7 +156,8 @@ const params = {
     fadeColor2: fadeColor2,
     fadeColor3: fadeColor3,
     fadeColor4: fadeColor4,
-    fadeColor5: fadeColor5
+    fadeColor5: fadeColor5,
+    moveSpeed: flyControls.movementSpeed
 };
 
 gui.addColor(params, 'color').name('Color').onChange(value => {
@@ -199,6 +200,9 @@ gui.addColor(params, 'fadeColor4').name('Mid High Color').onChange(value => {
 gui.addColor(params, 'fadeColor5').name('High Color').onChange(value => {
     fadeColor5 = value;
     createTerrain(terrainData);
+});
+gui.add(params, 'moveSpeed', 10, 100).name('Move speed').onChange(value => {
+    flyControls.movementSpeed = value;
 });
 
 function animate() {
