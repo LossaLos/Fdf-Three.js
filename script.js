@@ -32,16 +32,18 @@ let rotationSpeedY = 0;
 let rotationSpeedZ = 0;
 let wireframeColor = 0xffffff;
 let fadeHeightEffect = true;
-let fadeColor1 = 0xff0000;
-let fadeColor2 = 0x0000ff;
+let fadeColor1 = 0x24e;
+let fadeColor2 = 0x9400;
+let fadeColor3 = 0x0;
+let fadeColor4 = 0xa0a000;
+let fadeColor5 = 0xff0000;
 
-document.getElementById('loadFranceMap').addEventListener('click', () => {loadMapFromFile('42_map_pack/fr.fdf');});
-document.getElementById('loadPyraMap').addEventListener('click', () => {loadMapFromFile('42_map_pack/pylone.fdf');});
-document.getElementById('loadMarsMap').addEventListener('click', () => {loadMapFromFile('42_map_pack/mars.fdf');});
-document.getElementById('load42Map').addEventListener('click', () => {loadMapFromFile('42_map_pack/42.fdf');});
+document.getElementById('loadFranceMap').addEventListener('click', () => { loadMapFromFile('42_map_pack/fr.fdf'); });
+document.getElementById('loadPyraMap').addEventListener('click', () => { loadMapFromFile('42_map_pack/pylone.fdf'); });
+document.getElementById('loadMarsMap').addEventListener('click', () => { loadMapFromFile('42_map_pack/mars.fdf'); });
+document.getElementById('load42Map').addEventListener('click', () => { loadMapFromFile('42_map_pack/42.fdf'); });
 
-async function loadMapFromFile(filePath) 
-{
+async function loadMapFromFile(filePath) {
     try 
     {
         const response = await fetch(filePath);
@@ -57,8 +59,7 @@ async function loadMapFromFile(filePath)
     }
 }
 
-function createTerrain(data)
-{
+function createTerrain(data) {
     const existingTerrain = scene.children.filter(child => child.type === "LineSegments");
     existingTerrain.forEach(terrain => scene.remove(terrain));
 
@@ -70,8 +71,6 @@ function createTerrain(data)
     const height = data.length;
 
     const maxZ = Math.max(...data.flat());
-    const color1 = new THREE.Color(fadeColor1);
-    const color2 = new THREE.Color(fadeColor2);
 
     for (let i = 0; i < height; i++) 
     {
@@ -81,14 +80,28 @@ function createTerrain(data)
             const y = (height - i - 1) * spacing;
             const z = data[i][j];
             vertices.push(x, y, z);
+
+            let color;
             if (fadeHeightEffect) 
             {
                 const lerpFactor = z / maxZ;
-                const color = color1.clone().lerp(color2, lerpFactor);
-                colors.push(color.r, color.g, color.b);
+
+                if (lerpFactor < 0.2)
+                    color = new THREE.Color(fadeColor1).lerp(new THREE.Color(fadeColor2), lerpFactor / 0.2);
+                else if (lerpFactor < 0.4)
+                    color = new THREE.Color(fadeColor2).lerp(new THREE.Color(fadeColor3), (lerpFactor - 0.2) / 0.2);
+                else if (lerpFactor < 0.6)
+                    color = new THREE.Color(fadeColor3).lerp(new THREE.Color(fadeColor4), (lerpFactor - 0.4) / 0.2);
+                else if (lerpFactor < 0.8)
+                    color = new THREE.Color(fadeColor4).lerp(new THREE.Color(fadeColor5), (lerpFactor - 0.6) / 0.2);
+                else
+                    color = new THREE.Color(fadeColor5);
             } 
             else
-                colors.push(1, 1, 1);
+                color = new THREE.Color(wireframeColor);
+
+            colors.push(color.r, color.g, color.b);
+
             if (j < width - 1)
                 indices.push(i * width + j, i * width + (j + 1));
             if (i < height - 1)
@@ -100,7 +113,7 @@ function createTerrain(data)
     geometry.setIndex(indices);
     geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
-    const material = new THREE.LineBasicMaterial({ color: wireframeColor, vertexColors: fadeHeightEffect });
+    const material = new THREE.LineBasicMaterial({ color: wireframeColor, vertexColors: true });
     wireframe = new THREE.LineSegments(geometry, material);
     scene.add(wireframe);
 
@@ -117,14 +130,13 @@ function createTerrain(data)
     flyControls.update(0.1);
 }
 
-function parseTerrainInput(text) 
-{
+function parseTerrainInput(text) {
     const rows = text.trim().split('\n');
     return rows.map(row => row.trim().split(/\s+/).map(Number));
 }
 
-document.getElementById('openDialog').addEventListener('click', () => {document.getElementById('dialog').style.display = 'block';});
-document.getElementById('closeDialog').addEventListener('click', () => {document.getElementById('dialog').style.display = 'none';});
+document.getElementById('openDialog').addEventListener('click', () => { document.getElementById('dialog').style.display = 'block'; });
+document.getElementById('closeDialog').addEventListener('click', () => { document.getElementById('dialog').style.display = 'none'; });
 document.getElementById('applyTerrain').addEventListener('click', () => {
     const terrainInput = document.getElementById('terrainInput').value;
     terrainData = parseTerrainInput(terrainInput);
@@ -141,43 +153,60 @@ const params = {
     rotationSpeedZ: rotationSpeedZ,
     fadeHeight: fadeHeightEffect,
     fadeColor1: fadeColor1,
-    fadeColor2: fadeColor2
+    fadeColor2: fadeColor2,
+    fadeColor3: fadeColor3,
+    fadeColor4: fadeColor4,
+    fadeColor5: fadeColor5
 };
 
-gui.addColor(params, 'color').onChange(value => {
+gui.addColor(params, 'color').name('Color').onChange(value => {
     wireframeColor = value;
     createTerrain(terrainData);
 });
-gui.add(params, 'spacing', 0.5, 5).onChange(value => {
+gui.add(params, 'spacing', 0.5, 5).name('Sizing').onChange(value => {
     spacing = value;
     createTerrain(terrainData);
 });
-gui.add(params, 'rotationSpeedX', 0, 0.01).onChange(value => {
+gui.add(params, 'rotationSpeedX', 0, 0.01).name('Rotation X').onChange(value => {
     rotationSpeedX = value;
 });
-gui.add(params, 'rotationSpeedX', 0, 0.01).onChange(value => {
-    rotationSpeedX = value;
+gui.add(params, 'rotationSpeedY', 0, 0.01).name('Rotation Y').onChange(value => {
+    rotationSpeedY = value;
 });
-gui.add(params, 'fadeHeight').onChange(value => {
+gui.add(params, 'rotationSpeedZ', 0, 0.01).name('Rotation z').onChange(value => {
+    rotationSpeedZ = value;
+});
+gui.add(params, 'fadeHeight').name('Fading').onChange(value => {
     fadeHeightEffect = value;
     createTerrain(terrainData);
 });
-gui.addColor(params, 'fadeColor1').onChange(value => {
+gui.addColor(params, 'fadeColor1').name('Low Color').onChange(value => {
     fadeColor1 = value;
     createTerrain(terrainData);
 });
-gui.addColor(params, 'fadeColor2').onChange(value => {
+gui.addColor(params, 'fadeColor2').name('Mid Low Color').onChange(value => {
     fadeColor2 = value;
     createTerrain(terrainData);
 });
+gui.addColor(params, 'fadeColor3').name('Mid Color').onChange(value => {
+    fadeColor3 = value;
+    createTerrain(terrainData);
+});
+gui.addColor(params, 'fadeColor4').name('Mid High Color').onChange(value => {
+    fadeColor4 = value;
+    createTerrain(terrainData);
+});
+gui.addColor(params, 'fadeColor5').name('High Color').onChange(value => {
+    fadeColor5 = value;
+    createTerrain(terrainData);
+});
 
-function animate() 
-{
+function animate() {
     requestAnimationFrame(animate);
     pivot.rotation.x += rotationSpeedX;
     pivot.rotation.y += rotationSpeedY;
     pivot.rotation.z += rotationSpeedZ;
-    flyControls.update(0.1); 
+    flyControls.update(0.1);
     renderer.render(scene, camera);
 }
 
